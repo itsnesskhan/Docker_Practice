@@ -31,6 +31,7 @@ public class DockerPraticeApplication<T> {
 	@PostMapping("/uploadpdf")
     public T saveCandidate(@RequestPart("file") MultipartFile file) {
 		System.out.println("hellow everyone");
+		System.out.println("how you doing");
         T saveCandidates = pdfService.saveCandidates(file);
         return saveCandidates;
     }
