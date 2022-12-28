@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+    webservice:
+      container_name: myapp
+      image: myapp
+      build: .
+      ports:
+        - 8085:8080
+      networks:
+        - bootapp  
+      depends_on:
+      - dbservice
+      environment:
+        MYSQL_HOST: mydb
+        MYSQL_USER: root
+        MYSQL_PASSWORD: root
+        MYSQL_PORT: 3306
+    dbservice:
+      container_name: mydb
+      image: mysql
+      volumes:
+        - C:\Users\Its\Desktop\db:/var/lib/mysql   
+      ports:
+        - 3307:3306
+      networks:
+        - bootapp  
+      environment:
+        MYSQL_DATABASE: docker_practice
+        MYSQL_ROOT_PASSWORD: root  
+networks:
+  bootapp:
